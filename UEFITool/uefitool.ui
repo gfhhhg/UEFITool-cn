@@ -56,7 +56,7 @@
     <set>Qt::DockWidgetArea::LeftDockWidgetArea|Qt::DockWidgetArea::RightDockWidgetArea|Qt::DockWidgetArea::TopDockWidgetArea</set>
    </property>
    <property name="windowTitle">
-    <string>Structure</string>
+    <string>结构</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
