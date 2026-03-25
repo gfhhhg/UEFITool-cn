@@ -20,7 +20,7 @@
    <bool>true</bool>
   </property>
   <property name="windowTitle">
-   <string>UEFITool</string>
+   <string>UEFITool 固件编辑工具</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
@@ -56,7 +56,7 @@
     <set>Qt::DockWidgetArea::LeftDockWidgetArea|Qt::DockWidgetArea::RightDockWidgetArea|Qt::DockWidgetArea::TopDockWidgetArea</set>
    </property>
    <property name="windowTitle">
-    <string>结构</string>
+    <string>固件结构</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -99,7 +99,7 @@
     <set>Qt::DockWidgetArea::AllDockWidgetAreas</set>
    </property>
    <property name="windowTitle">
-    <string>Information</string>
+    <string>固件信息</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -130,7 +130,7 @@
     <set>Qt::DockWidgetArea::AllDockWidgetAreas</set>
    </property>
    <property name="windowTitle">
-    <string>Parser</string>
+    <string>解析日志</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
@@ -155,7 +155,7 @@
     <set>Qt::DockWidgetArea::AllDockWidgetAreas</set>
    </property>
    <property name="windowTitle">
-    <string>FIT</string>
+    <string>FIT 表</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
@@ -176,7 +176,7 @@
     <set>Qt::DockWidgetArea::AllDockWidgetAreas</set>
    </property>
    <property name="windowTitle">
-    <string>Security</string>
+    <string>安全信息</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
@@ -207,7 +207,7 @@
     <set>Qt::DockWidgetArea::AllDockWidgetAreas</set>
    </property>
    <property name="windowTitle">
-    <string>Search</string>
+    <string>搜索结果</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
@@ -232,7 +232,7 @@
     <set>Qt::DockWidgetArea::BottomDockWidgetArea</set>
    </property>
    <property name="windowTitle">
-    <string>Builder</string>
+    <string>重建日志</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
@@ -251,7 +251,7 @@
   </widget>
   <widget class="QDockWidget" name="hexViewDock">
    <property name="windowTitle">
-    <string>Hex view</string>
+    <string>十六进制视图</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -272,7 +272,7 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>&amp;File</string>
+     <string>&amp;文件</string>
     </property>
     <addaction name="actionOpenImageFile"/>
     <addaction name="actionOpenImageFileInNewWindow"/>
@@ -291,18 +291,18 @@
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>H&amp;elp</string>
+     <string>&amp;帮助</string>
     </property>
     <addaction name="actionAbout"/>
     <addaction name="actionAboutQt"/>
    </widget>
    <widget class="QMenu" name="menuAction">
     <property name="title">
-     <string>&amp;Action</string>
+     <string>&amp;操作</string>
     </property>
     <widget class="QMenu" name="menuHashActions">
      <property name="title">
-      <string>&amp;Hash</string>
+      <string>&amp;哈希值</string>
      </property>
      <addaction name="actionHashCrc32"/>
      <addaction name="separator"/>
@@ -316,7 +316,7 @@
     </widget>
     <widget class="QMenu" name="menuHashBodyActions">
      <property name="title">
-      <string>Hash &amp;body</string>
+      <string>主体&amp;哈希</string>
      </property>
      <addaction name="actionBodyHashCrc32"/>
      <addaction name="separator"/>
@@ -330,7 +330,7 @@
     </widget>
     <widget class="QMenu" name="menuHashUncompressedActions">
      <property name="title">
-      <string>Hash &amp;uncompressed</string>
+      <string>解压缩&amp;哈希</string>
      </property>
      <addaction name="actionUncompressedHashCrc32"/>
      <addaction name="separator"/>
@@ -344,7 +344,7 @@
     </widget>
     <widget class="QMenu" name="menuCapsuleActions">
      <property name="title">
-      <string>&amp;Capsule</string>
+      <string>&amp;胶囊固件</string>
      </property>
      <addaction name="actionHexView"/>
      <addaction name="actionBodyHexView"/>
@@ -359,7 +359,7 @@
     </widget>
     <widget class="QMenu" name="menuImageActions">
      <property name="title">
-      <string>&amp;Image</string>
+      <string>&amp;固件镜像</string>
      </property>
      <addaction name="actionHexView"/>
      <addaction name="separator"/>
@@ -369,7 +369,7 @@
     </widget>
     <widget class="QMenu" name="menuRegionActions">
      <property name="title">
-      <string>&amp;Region</string>
+      <string>&amp;固件分区</string>
      </property>
      <addaction name="actionHexView"/>
      <addaction name="separator"/>
@@ -383,7 +383,7 @@
     </widget>
     <widget class="QMenu" name="menuPaddingActions">
      <property name="title">
-      <string>&amp;Padding</string>
+      <string>&amp;填充数据</string>
      </property>
      <addaction name="actionHexView"/>
      <addaction name="separator"/>
@@ -393,7 +393,7 @@
     </widget>
     <widget class="QMenu" name="menuVolumeActions">
      <property name="title">
-      <string>&amp;Volume</string>
+      <string>&amp;固件卷</string>
      </property>
      <addaction name="actionHexView"/>
      <addaction name="actionBodyHexView"/>
@@ -415,7 +415,7 @@
     </widget>
     <widget class="QMenu" name="menuFileActions">
      <property name="title">
-      <string>&amp;File</string>
+      <string>&amp;固件文件</string>
      </property>
      <addaction name="actionHexView"/>
      <addaction name="actionBodyHexView"/>
@@ -441,7 +441,7 @@
     </widget>
     <widget class="QMenu" name="menuSectionActions">
      <property name="title">
-      <string>&amp;Section</string>
+      <string>&amp;固件段</string>
      </property>
      <addaction name="actionHexView"/>
      <addaction name="actionBodyHexView"/>
@@ -471,7 +471,7 @@
       <bool>false</bool>
      </property>
      <property name="title">
-      <string>&amp;Messages</string>
+      <string>&amp;日志操作</string>
      </property>
      <addaction name="actionMessagesCopy"/>
      <addaction name="actionMessagesCopyAll"/>
@@ -480,7 +480,7 @@
     </widget>
     <widget class="QMenu" name="menuEntryActions">
      <property name="title">
-      <string>&amp;Entry</string>
+      <string>&amp;固件项</string>
      </property>
      <addaction name="actionHexView"/>
      <addaction name="actionBodyHexView"/>
@@ -507,7 +507,7 @@
     </widget>
     <widget class="QMenu" name="menuStoreActions">
      <property name="title">
-      <string>S&amp;tore</string>
+      <string>&amp;存储区</string>
      </property>
      <addaction name="actionHexView"/>
      <addaction name="actionBodyHexView"/>
@@ -549,7 +549,7 @@
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
-     <string>&amp;View</string>
+     <string>&amp;视图</string>
     </property>
     <addaction name="actionToggleBootGuardMarking"/>
     <addaction name="separator"/>
@@ -571,7 +571,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Insert &amp;after...</string>
+    <string>在后方&amp;插入...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+I</string>
@@ -582,7 +582,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Insert b&amp;efore...</string>
+    <string>在前方&amp;插入...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+I</string>
@@ -593,7 +593,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Rep&amp;lace as is...</string>
+    <string>直接&amp;替换...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+R</string>
@@ -604,7 +604,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>E&amp;xtract as is...</string>
+    <string>直接&amp;提取...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+E</string>
@@ -615,7 +615,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Extract &amp;body...</string>
+    <string>提取&amp;主体...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+E</string>
@@ -626,7 +626,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Re&amp;move</string>
+    <string>&amp;删除</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Del</string>
@@ -634,7 +634,7 @@
   </action>
   <action name="actionOpenImageFile">
    <property name="text">
-    <string>&amp;Open image file...</string>
+    <string>&amp;打开固件文件...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -645,7 +645,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Insert &amp;into...</string>
+    <string>插入&amp;到...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+I</string>
@@ -656,7 +656,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>&amp;Save image file...</string>
+    <string>&amp;保存固件文件...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -667,7 +667,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>&amp;Rebuild</string>
+    <string>&amp;重建固件</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Space</string>
@@ -675,7 +675,7 @@
   </action>
   <action name="actionAbout">
    <property name="text">
-    <string>&amp;About UEFITool</string>
+    <string>关于&amp;UEFITool</string>
    </property>
    <property name="shortcut">
     <string>F1</string>
@@ -686,7 +686,7 @@
   </action>
   <action name="actionAboutQt">
    <property name="text">
-    <string>About &amp;Qt</string>
+    <string>关于&amp;Qt</string>
    </property>
    <property name="shortcut">
     <string>Shift+F1</string>
@@ -697,7 +697,7 @@
   </action>
   <action name="actionQuit">
    <property name="text">
-    <string>&amp;Quit</string>
+    <string>&amp;退出</string>
    </property>
    <property name="shortcut">
     <string>Alt+X</string>
@@ -711,7 +711,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Searc&amp;h...</string>
+    <string>&amp;搜索...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+F</string>
@@ -722,7 +722,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Clea&amp;r</string>
+    <string>&amp;清空</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Backspace</string>
@@ -733,7 +733,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Replace b&amp;ody...</string>
+    <string>替换&amp;主体...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+R</string>
@@ -744,7 +744,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>&amp;Copy</string>
+    <string>&amp;复制</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+C</string>
@@ -755,7 +755,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Copy &amp;all</string>
+    <string>复制&amp;全部</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+C</string>
@@ -763,7 +763,7 @@
   </action>
   <action name="actionOpenImageFileInNewWindow">
    <property name="text">
-    <string>O&amp;pen image file in new window...</string>
+    <string>在新窗口&amp;打开固件文件...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+O</string>
@@ -774,7 +774,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Extract &amp;uncompressed...</string>
+    <string>提取&amp;解压缩内容...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+E</string>
@@ -785,7 +785,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Go &amp;to data</string>
+    <string>跳转到&amp;数据区</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+T</string>
@@ -796,7 +796,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Hex &amp;view...</string>
+    <string>十六进制&amp;视图...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
@@ -807,7 +807,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Select item at &amp;base...</string>
+    <string>跳转到&amp;基地址项...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+G</string>
@@ -818,7 +818,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Body hex vie&amp;w...</string>
+    <string>主体十六进制&amp;视图...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+D</string>
@@ -829,7 +829,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Un&amp;compressed hex view...</string>
+    <string>解压缩后十六进制&amp;视图...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+D</string>
@@ -837,7 +837,7 @@
   </action>
   <action name="actionLoadGuidDatabase">
    <property name="text">
-    <string>Load &amp;GUID database...</string>
+    <string>加载&amp;GUID数据库...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+G</string>
@@ -848,7 +848,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Select item at &amp;address...</string>
+    <string>跳转到&amp;指定地址项...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+G</string>
@@ -862,7 +862,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>BootGuard &amp;markings</string>
+    <string>BootGuard&amp;标记</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+B</string>
@@ -873,7 +873,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Generate &amp;report...</string>
+    <string>生成&amp;报告...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+R</string>
@@ -881,7 +881,7 @@
   </action>
   <action name="actionUnloadGuidDatabase">
    <property name="text">
-    <string>&amp;Unload GUID database</string>
+    <string>&amp;卸载GUID数据库</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+U</string>
@@ -889,7 +889,7 @@
   </action>
   <action name="actionLoadDefaultGuidDatabase">
    <property name="text">
-    <string>Load &amp;default GUID database</string>
+    <string>加载&amp;默认GUID数据库</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+D</string>
@@ -900,7 +900,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>&amp;Export discovered GUIDs...</string>
+    <string>&amp;导出已识别GUID...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+E</string>
@@ -911,7 +911,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>&amp;Copy item name</string>
+    <string>&amp;复制项名称</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+C</string>
@@ -922,7 +922,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>E&amp;xpand item recursively</string>
+    <string>递归&amp;展开项</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+[</string>
@@ -933,7 +933,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>C&amp;ollapse item recursively</string>
+    <string>递归&amp;折叠项</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+]</string>
@@ -944,7 +944,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>&amp;Clear recently opened files list</string>
+    <string>&amp;清空最近打开文件列表</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+Backspace</string>
@@ -1096,7 +1096,7 @@
   </action>
   <action name="actionResetDocks">
    <property name="text">
-    <string>&amp;Reset docks</string>
+    <string>&amp;重置面板布局</string>
    </property>
   </action>
  </widget>
