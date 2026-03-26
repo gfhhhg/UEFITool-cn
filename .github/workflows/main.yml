@@ -1,4 +1,4 @@
-name: Build Windows x64 EXE
+name: Build Windows x64 STATIC EXE (15MB 单文件版)
 
 on:
   push:
@@ -7,36 +7,37 @@ on:
 jobs:
   build:
     runs-on: windows-2022
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Setup Qt 6 x64
-        uses: jurplel/install-qt-action@v4
+      - name: Download Static Qt 6.5 x64
+        uses: actions/checkout@v4
         with:
-          version: 6.7.0
-          host: windows
-          target: desktop
-          arch: win64_msvc2019_64
-          modules: qt5compat
+          repository: LongSoft/qt-6-static-x64-msvc2022
+          path: qt6
+          lfs: true
+
+      - name: Unpack Qt
+        run: 7z x qt6\qt-6.5.0-static-x64-msvc2022.7z -o..\
 
       - name: Configure
         run: |
-          cmake -B build -A x64 -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+          cmake -B build -G "Visual Studio 17 2022" -A x64 ^
+          -DCMAKE_PREFIX_PATH=%GITHUB_WORKSPACE%\..\qt-6.5.0-static-x64-msvc2022 ^
+          -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded ^
+          -DBUILD_STATIC=ON
 
       - name: Build
         run: |
           cmake --build build --config Release -j 4
 
-      - name: Upload EXE
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: UEFITool-Win64
+          name: UEFITool-Win64-Static
           path: |
             build/UEFITool/Release/UEFITool.exe
             build/UEFIExtract/Release/UEFIExtract.exe
