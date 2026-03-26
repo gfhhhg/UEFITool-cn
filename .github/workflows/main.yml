@@ -12,7 +12,7 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Download Static Qt 5.6.3 (Win32)
+      - name: Download Qt 5.6.3 static x86
         uses: actions/checkout@v4
         with:
           repository: LongSoft/qt-5.6.3-static-x86-msvc2017
@@ -23,17 +23,17 @@ jobs:
         shell: bash
         run: 7z x qt5/qt-5.6.3-static-x86-msvc2017.7z -o../
 
-      - name: Configure CMake
+      - name: Configure
         run: |
           cmake -B build -G "Visual Studio 17 2022" -A Win32 `
             -DCMAKE_PREFIX_PATH="$env:GITHUB_WORKSPACE/../qt-5.6.3-static-x86-msvc2017" `
-            -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded"
+            -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded" `
+            -DQT_MAJOR_VERSION=5
 
-      - name: Build Release
-        run: |
-          cmake --build build --config Release -j 4
+      - name: Build
+        run: cmake --build build --config Release -j 4
 
-      - name: Upload EXE
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: UEFITool-Win32-Static
