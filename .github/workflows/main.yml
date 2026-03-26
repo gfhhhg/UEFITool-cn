@@ -21,12 +21,11 @@ jobs:
 
       - name: Extract Qt
         shell: bash
-        run: |
-          7z x qt5/qt-5.6.3-static-x86-msvc2017.7z -o../
+        run: 7z x qt5/qt-5.6.3-static-x86-msvc2017.7z -o../
 
       - name: Configure CMake
         run: |
-          cmake -B build -G "Visual Studio 17 2022" -A Win32 -T v141_xp `
+          cmake -B build -G "Visual Studio 17 2022" -A Win32 `
             -DCMAKE_PREFIX_PATH="$env:GITHUB_WORKSPACE/../qt-5.6.3-static-x86-msvc2017" `
             -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded"
 
