@@ -1,4 +1,4 @@
-name: CI/CD - Only Windows EXE Builds
+name: Build Windows 64bit EXE Only
 
 on:
   push:
@@ -8,148 +8,51 @@ on:
     types: [published]
 
 jobs:
-# Windows 32-bit EXE build (static Qt 5.6.3)
-  build_release_windows_32:
-    name: Release build (Win32, static Qt 5.6.3)
+  build-windows-x64:
     runs-on: windows-2022
+    name: Build Windows x64 EXE
+    
     steps:
-      - uses: actions/checkout@v3 
-      - name: Get Qt 5.6.3
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          repository: LongSoft/qt-5.6.3-static-x86-msvc2017
-          path: qt5
-          lfs: true
-      - name: Unpack Qt 5.6.3
-        shell: bash
-        working-directory: qt5
-        run: 7z x qt-5.6.3-static-x86-msvc2017.7z -o../..
-      - name: Install v141_xp Toolset
-        shell: powershell
-        run: |
-          Set-Location "C:\Program Files (x86)\Microsoft Visual Studio\Installer\"
-          $InstallPath = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise"
-          $WorkLoads = '--add Microsoft.VisualStudio.Component.WinXP'
-          $Arguments = ('/c', "vs_installer.exe", 'modify', '--installPath', "`"$InstallPath`"", $WorkLoads, '--quiet', '--norestart', '--nocache')
-          $process = Start-Process -FilePath cmd.exe -ArgumentList $Arguments -Wait -PassThru -WindowStyle Hidden
-          if ($process.ExitCode -eq 0) {
-              Write-Host "components have been successfully added"
-          } else {
-              Write-Host "components were not installed"
-          }
-      - name: Create dist directory
-        shell: bash
-        run: mkdir -p ${{runner.workspace}}/UEFITool/dist
-      - name: Create UEFIExtract build directory
-        run: cmake -E make_directory ${{runner.workspace}}/build/UEFIExtract
-      - name: Configure UEFIExtract
-        shell: bash
-        working-directory: ${{runner.workspace}}/build/UEFIExtract
-        run: cmake -G "Visual Studio 17 2022" -A Win32 -T "v141_xp" -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded" ../../UEFITool/UEFIExtract/
-      - name: Build UEFIExtract (Win32 EXE)
-        working-directory: ${{runner.workspace}}/build/UEFIExtract
-        shell: bash
-        run: cmake --build . --config Release
-      - name: Archive UEFIExtract EXE
-        working-directory: ${{runner.workspace}}/build/UEFIExtract/Release
-        shell: bash
-        run: |
-          UEFITOOL_VER=$(cat ../../../UEFITool/version.h | grep PROGRAM_VERSION | cut -d'"' -f2 | sed 's/NE alpha /A/') ; \
-          7z a ../../../UEFITool/dist/UEFIExtract_NE_${UEFITOOL_VER}_win32.zip UEFIExtract.exe
-      - name: Create UEFIFind build directory
-        run: cmake -E make_directory ${{runner.workspace}}/build/UEFIFind
-      - name: Configure UEFIFind
-        working-directory: ${{runner.workspace}}/build/UEFIFind
-        shell: bash
-        run: cmake -G "Visual Studio 17 2022" -A Win32 -T "v141_xp" -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded" ../../UEFITool/UEFIFind/
-      - name: Build UEFIFind (Win32 EXE)
-        working-directory: ${{runner.workspace}}/build/UEFIFind
-        shell: bash
-        run: cmake --build . --config Release
-      - name: Archive UEFIFind EXE
-        working-directory: ${{runner.workspace}}/build/UEFIFind/Release
-        shell: bash
-        run: |
-          UEFITOOL_VER=$(cat ../../../UEFITool/version.h | grep PROGRAM_VERSION | cut -d'"' -f2 | sed 's/NE alpha /A/') ; \
-          7z a ../../../UEFITool/dist/UEFIFind_NE_${UEFITOOL_VER}_win32.zip UEFIFind.exe
-      - name: Create UEFITool build directory
-        run: cmake -E make_directory ${{runner.workspace}}/build/UEFITool
-      - name: Configure UEFITool
-        shell: bash
-        working-directory: ${{runner.workspace}}/build/UEFITool
-        run: ../../qt-5.6.3-static-x86-msvc2017/bin/qmake.exe -tp vc ../../UEFITool/UEFITool/
-      - name: Build UEFITool (Win32 EXE)
-        working-directory: ${{runner.workspace}}/build/UEFITool
-        shell: cmd
-        run: |
-            call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
-            msbuild -t:Rebuild -p:PlatformToolset=v141_xp;Configuration=Release
-      - name: Archive UEFITool EXE
-        working-directory: ${{runner.workspace}}/build/UEFITool/release
-        shell: bash
-        run: |
-          UEFITOOL_VER=$(cat ../../../UEFITool/version.h | grep PROGRAM_VERSION | cut -d'"' -f2 | sed 's/NE alpha /A/') ; \
-          7z a ../../../UEFITool/dist/UEFITool_NE_${UEFITOOL_VER}_win32.zip UEFITool.exe
-      - name: Upload Win32 EXE artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: Windows 32-bit EXE builds
-          path: ${{runner.workspace}}/UEFITool/dist/*.zip
-      - name: Upload Win32 EXE to releases
-        if: github.event_name == 'release'
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{runner.workspace}}/UEFITool/dist/*.zip
-          tag: ${{ github.ref }}
-          file_glob: true
+          submodules: recursive
+          fetch-depth: 1
 
-# Windows 64-bit EXE build (static Qt 6.5.0)
-  build_release_windows_64:
-    name: Release build (Win64, static Qt 6.5.0)
-    runs-on: windows-2022
-    steps:
-      - uses: actions/checkout@v3 
-      - name: Get Qt 6.5.0
-        uses: actions/checkout@v3
+      - name: Download static Qt 6.5.0 x64
+        uses: actions/checkout@v4
         with:
           repository: LongSoft/qt-6-static-x64-msvc2022
           path: qt6
           lfs: true
-      - name: Unpack Qt 6.5.0
+
+      - name: Unpack Qt
         shell: bash
-        working-directory: qt6
-        run: 7z x qt-6.5.0-static-x64-msvc2022.7z -o../..
-      - name: Create build directory
-        run: cmake -E make_directory ${{runner.workspace}}/build
-      - name: Configure everything (Win64)
-        working-directory: ${{runner.workspace}}/build
-        shell: cmd
-        run: cmake -DCMAKE_PREFIX_PATH="D:\a\UEFITool\qt-6.5.0-static-x64-msvc2022" -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded" -A x64 ../UEFITool
-      - name: Build all EXEs (Win64)
-        working-directory: ${{runner.workspace}}/build
-        shell: bash
-        run: cmake --build . --config Release
-      - name: Create dist directory
-        run: cmake -E make_directory ${{runner.workspace}}/UEFITool/dist
-      - name: Archive Win64 EXEs
-        working-directory: ${{runner.workspace}}/build
-        shell: bash
+        run: 7z x qt6/qt-6.5.0-static-x64-msvc2022.7z -o../
+
+      - name: Create build dir
+        run: mkdir build
+
+      - name: CMake configure
+        working-directory: build
         run: |
-          UEFITOOL_VER=$(cat ../UEFITool/version.h | grep PROGRAM_VERSION | cut -d'"' -f2 | sed 's/NE alpha /A/') ; \
-          7z a ../UEFITool/dist/UEFIExtract_NE_${UEFITOOL_VER}_win64.zip ./UEFIExtract/Release/UEFIExtract.exe
-          7z a ../UEFITool/dist/UEFIFind_NE_${UEFITOOL_VER}_win64.zip ./UEFIFind/Release/UEFIFind.exe
-          7z a ../UEFITool/dist/UEFITool_NE_${UEFITOOL_VER}_win64.zip ./UEFITool/Release/UEFITool.exe
-      - name: Upload Win64 EXE artifacts
+          cmake .. -G "Visual Studio 17 2022" -A x64 ^
+          -DCMAKE_PREFIX_PATH="${{ github.workspace }}/../qt-6.5.0-static-x64-msvc2022" ^
+          -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded"
+
+      - name: Build release
+        working-directory: build
+        run: cmake --build . --config Release -j4
+
+      - name: Collect EXEs
+        run: |
+          mkdir dist
+          copy build\UEFITool\Release\UEFITool.exe dist\
+          copy build\UEFIExtract\Release\UEFIExtract.exe dist\
+          copy build\UEFIFind\Release\UEFIFind.exe dist\
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Windows 64-bit EXE builds
-          path: ${{runner.workspace}}/UEFITool/dist/*.zip
-      - name: Upload Win64 EXE to releases
-        if: github.event_name == 'release'
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{runner.workspace}}/UEFITool/dist/*.zip
-          tag: ${{ github.ref }}
-          file_glob: true
+          name: UEFITool-Win64-EXE
+          path: dist/*.exe
