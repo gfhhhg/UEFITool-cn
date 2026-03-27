@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Search</string>
+   <string>搜索</string>
   </property>
   <property name="modal">
    <bool>false</bool>
@@ -24,13 +24,13 @@
      </property>
      <widget class="QWidget" name="hexTab">
       <attribute name="title">
-       <string>Hex pattern</string>
-      </attribute>
+        <string>十六进制模式</string>
+       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0">
         <widget class="QLabel" name="hexLabel">
          <property name="text">
-          <string>Hex pattern:</string>
+          <string>十六进制模式：</string>
          </property>
         </widget>
        </item>
@@ -47,13 +47,13 @@
        <item row="1" column="0" colspan="2">
         <widget class="QGroupBox" name="hexGroupBox">
          <property name="title">
-          <string>Search scope</string>
+          <string>搜索范围</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
            <widget class="QRadioButton" name="hexScopeFullRadioButton">
             <property name="text">
-             <string>Header and body</string>
+             <string>头部和主体</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -63,14 +63,14 @@
           <item>
            <widget class="QRadioButton" name="hexScopeHeaderRadioButton">
             <property name="text">
-             <string>Header only</string>
+             <string>仅头部</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QRadioButton" name="hexScopeBodyRadioButton">
             <property name="text">
-             <string>Body only</string>
+             <string>仅主体</string>
             </property>
            </widget>
           </item>
@@ -87,7 +87,7 @@
        <item row="0" column="0">
         <widget class="QLabel" name="guidLabel">
          <property name="text">
-          <string>GUID:</string>
+          <string>GUID：</string>
          </property>
         </widget>
        </item>
@@ -107,13 +107,13 @@
        <item row="1" column="0" colspan="2">
         <widget class="QGroupBox" name="guidGroupBox">
          <property name="title">
-          <string>Search scope</string>
+          <string>搜索范围</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
            <widget class="QRadioButton" name="guidScopeFullRadioButton">
             <property name="text">
-             <string>Header and body</string>
+             <string>头部和主体</string>
             </property>
             <property name="checked">
              <bool>false</bool>
@@ -123,7 +123,7 @@
           <item>
            <widget class="QRadioButton" name="guidScopeHeaderRadioButton">
             <property name="text">
-             <string>Header only</string>
+             <string>仅头部</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -133,7 +133,7 @@
           <item>
            <widget class="QRadioButton" name="guidScopeBodyRadioButton">
             <property name="text">
-             <string>Body only</string>
+             <string>仅主体</string>
             </property>
            </widget>
           </item>
@@ -144,8 +144,8 @@
      </widget>
      <widget class="QWidget" name="textTab">
       <attribute name="title">
-       <string>Text</string>
-      </attribute>
+        <string>文本</string>
+       </attribute>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
         <widget class="QLabel" name="textLabel">
@@ -156,7 +156,7 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Text:</string>
+          <string>文本：</string>
          </property>
         </widget>
        </item>
@@ -173,13 +173,13 @@
        <item row="1" column="0" colspan="2">
         <widget class="QGroupBox" name="hexGroupBox_2">
          <property name="title">
-          <string>Search scope</string>
+          <string>搜索范围</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <widget class="QRadioButton" name="textScopeFullRadioButton">
             <property name="text">
-             <string>Header and body</string>
+             <string>头部和主体</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -189,14 +189,14 @@
           <item>
            <widget class="QRadioButton" name="textScopeHeaderRadioButton">
             <property name="text">
-             <string>Header only</string>
+             <string>仅头部</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QRadioButton" name="textScopeBodyRadioButton">
             <property name="text">
-             <string>Body only</string>
+             <string>仅主体</string>
             </property>
            </widget>
           </item>
@@ -206,7 +206,7 @@
        <item row="1" column="2">
         <widget class="QGroupBox" name="textGroupBox">
          <property name="title">
-          <string>Text search options</string>
+          <string>文本搜索选项</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
@@ -222,7 +222,7 @@
           <item>
            <widget class="QCheckBox" name="textCaseSensitiveCheckBox">
             <property name="text">
-             <string>Case sensitive</string>
+             <string>区分大小写</string>
             </property>
            </widget>
           </item>

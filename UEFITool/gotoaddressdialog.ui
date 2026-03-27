@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Select item at address</string>
+   <string>选择指定地址的项</string>
   </property>
   <property name="modal">
    <bool>false</bool>
@@ -75,15 +75,15 @@
       <item row="0" column="0">
        <widget class="QLabel" name="hexLabel">
         <property name="text">
-         <string>Select item at address:</string>
-        </property>
+          <string>选择指定地址的项：</string>
+         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="bankLabel">
         <property name="text">
-         <string>Bank:</string>
-        </property>
+          <string>存储库：</string>
+         </property>
         <property name="alignment">
          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
         </property>
